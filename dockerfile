@@ -14,7 +14,13 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
+RUN composer config -g process-timeout 2000
+
+RUN composer install \
+    --no-dev \
+    --prefer-dist \
+    --no-interaction \
+    --optimize-autoloader
 
 RUN chmod -R 777 storage bootstrap/cache
 
