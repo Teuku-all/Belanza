@@ -32,8 +32,6 @@ RUN chmod -R 777 storage bootstrap/cache
 
 EXPOSE 10000
 
-RUN php artisan config:clear
-RUN php artisan cache:clear
-RUN php artisan route:clear
+RUN php artisan optimize:clear
 
 CMD php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
