@@ -32,5 +32,5 @@ RUN chmod -R 777 storage bootstrap/cache
 
 EXPOSE 10000
 
-CMD php artisan storage:link
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
+
+CMD ["sh", "-c", "php artisan storage:link || true && php artisan config:clear && php artisan route:clear && php artisan serve --host=0.0.0.0 --port=$PORT"]
